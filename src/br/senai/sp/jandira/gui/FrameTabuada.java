@@ -6,10 +6,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+//import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
@@ -26,6 +29,7 @@ public class FrameTabuada {
 	public Font fonteDoTitulo;
 	public Font fonteDosLabels;
 	public Font fonteDosBotoes;
+	public Font fonteDoSubtitulo;
 	public Color corDeFundoDaTela;
 	public Color corDoBotaoLimpar;
 	public Color corDoBotaoCalcular;
@@ -34,7 +38,7 @@ public class FrameTabuada {
 	public Color corDoSubtitulo;
 	public Color corDoJlist;
 	public LineBorder corDaBorda;
-
+	ImageIcon IconeTabuada = new ImageIcon("src/br/senai/sp/jandira/image/imagem-tabuada.png");
 
 	public void criarTela() {
 
@@ -54,15 +58,15 @@ public class FrameTabuada {
 //		título tabuada e subtitulo
 		JLabel labelTitulo = new JLabel();
 		labelTitulo.setText("Tabuada 1.0");
-		labelTitulo.setBounds(80, 6, 200, 50);
+		labelTitulo.setBounds(100, 6, 220, 50);
 		labelTitulo.setFont(fonteDoTitulo);
 		labelTitulo.setForeground(corDoTitulo);
 
 		JLabel labelSubtitulo = new JLabel();
 		labelSubtitulo.setText(
 				"<html>Com a tabuada 1.0 os seus problemas acabaram. Calcule<br/>a tabuada que desejar em segundos!</html>");
-		labelSubtitulo.setBounds(80, 55, 600, 50);
-		labelSubtitulo.setFont(fonteDosLabels);
+		labelSubtitulo.setBounds(100, 55, 600, 50);
+		labelSubtitulo.setFont(fonteDoSubtitulo);
 		labelSubtitulo.setForeground(corDoSubtitulo);
 
 //		Multiplicando
@@ -75,14 +79,13 @@ public class FrameTabuada {
 		textFieldMultiplicando.setBounds(320, 120, 187, 40);
 		textFieldMultiplicando.setBorder(corDaBorda);
 		textFieldMultiplicando.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				textFieldMultiplicando.transferFocus();
-				
+
 			}
 		});
-		
 
 //		Minimo Multiplicador
 		JLabel labelMinimoMultiplicador = new JLabel();
@@ -94,14 +97,13 @@ public class FrameTabuada {
 		textFieldMinimoMultiplicador.setBounds(320, 180, 187, 40);
 		textFieldMinimoMultiplicador.setBorder(corDaBorda);
 		textFieldMinimoMultiplicador.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				textFieldMinimoMultiplicador.transferFocus();
-				
+
 			}
 		});
-		
 
 //		Maximo Multiplicador
 		JLabel labelMaximoMultiplicador = new JLabel();
@@ -113,15 +115,13 @@ public class FrameTabuada {
 		textFieldMaximoMultiplicador.setBounds(320, 240, 187, 40);
 		textFieldMaximoMultiplicador.setBorder(corDaBorda);
 		textFieldMaximoMultiplicador.addActionListener(new ActionListener() {
-			
+
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				textFieldMaximoMultiplicador.transferFocus();
-				
+
 			}
 		});
-		
-		
 
 //		Resultado
 		JLabel labelResultado = new JLabel();
@@ -137,7 +137,6 @@ public class FrameTabuada {
 		buttonCalcular.setBackground(corDoBotaoCalcular);
 		buttonCalcular.setFont(fonteDosBotoes);
 		buttonCalcular.setBorder(corDaBorda);
-		
 
 		JButton buttonLimpar = new JButton();
 		buttonLimpar.setText("Limpar");
@@ -153,43 +152,93 @@ public class FrameTabuada {
 
 		scroll.setBounds(50, 400, 455, 300);
 		scroll.setBorder(corDaBorda);
-		scroll.setBackground(corDoJlist);
+		lista.setBackground(corDoJlist);
+		
+		JLabel labelMensagemObrigatoria = new JLabel();
+		labelMensagemObrigatoria.setBounds(100, 200, 100, 60);
 
 //		fazendo o botao funcionar
 		buttonCalcular.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				/*if (textFieldMultiplicando.getText().length() > 0) {
+					labelMultiplicando.setVisible(false);
+				} else {
+					labelMensagemObrigatoria.setVisible(true);
+				}
 
-				Tabuada tabuada = new Tabuada();
-				tabuada.multiplicando = Integer.parseInt(textFieldMultiplicando.getText());
-				tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());
-				tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
+				if (textFieldMultiplicando.getText().length() > 0) {
+					labelMultiplicando.setVisible(false);
+				} else {
+					labelMensagemObrigatoria.setVisible(true);
+				}
 
-				String[] resultado = tabuada.getTabuada();
-				lista.setListData(resultado);
+				if (textFieldMinimoMultiplicador.getText().length() > 0) {
+					labelMinimoMultiplicador.setVisible(false);
+				} else {
+					labelMensagemObrigatoria.setVisible(true);
+				}
+				if (textFieldMaximoMultiplicador.getText().length() > 0) {
+					labelMaximoMultiplicador.setVisible(false);
+				} else {
+					labelMensagemObrigatoria.setVisible(true);
+				}*/
+				
+				if ((textFieldMultiplicando.getText().isEmpty()) || (textFieldMinimoMultiplicador.getText().isEmpty())
+						|| (textFieldMaximoMultiplicador.getText().isEmpty())) {
+					
+					JOptionPane.showMessageDialog(null, "Confira os campos, eles são obrigatórios!!");
+				} else {
+					
+					Tabuada tabuada = new Tabuada();
+					tabuada.multiplicando = Integer.parseInt(textFieldMultiplicando.getText());
+					tabuada.minimoMultiplicador = Integer.parseInt(textFieldMinimoMultiplicador.getText());
+					tabuada.maximoMultiplicador = Integer.parseInt(textFieldMaximoMultiplicador.getText());
+
+					if (tabuada.maximoMultiplicador >= tabuada.minimoMultiplicador) {
+						String[] resultado = tabuada.getTabuada();
+						lista.setListData(resultado);
+					} else {
+						JOptionPane.showMessageDialog(null, "O máximo deve ser maior que o mínimo!!");
+					}
+					
+					
+				}
+
+				
 
 			}
 		});
 
+		
+
+		
+		
 		buttonLimpar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
+				
+				
 
 				textFieldMultiplicando.setText("");
 				textFieldMinimoMultiplicador.setText("");
 				textFieldMaximoMultiplicador.setText("");
 
+				String[] limparJList = { "" };
+				lista.setListData(limparJList);
+
 			}
 		});
-		
-		
 
+		JLabel labelIcone = new JLabel(IconeTabuada);
+		labelIcone.setBounds(10, 6, 30, 30);
+		labelIcone.setSize(85, 85);
+		labelIcone.setIcon(IconeTabuada);
 
-		
-
-//		adicionar componentes ao painel (container)
+//	adicionar componentes ao painel (container)
 		painel.add(labelTitulo);
 		painel.add(labelSubtitulo);
 		painel.add(labelMultiplicando);
@@ -202,6 +251,8 @@ public class FrameTabuada {
 		painel.add(buttonCalcular);
 		painel.add(buttonLimpar);
 		painel.add(scroll);
+		painel.add(labelIcone);
+		painel.add(labelMensagemObrigatoria);
 
 		tela.setVisible(true);
 	}
