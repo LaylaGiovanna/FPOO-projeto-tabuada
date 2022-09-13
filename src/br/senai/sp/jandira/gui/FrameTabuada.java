@@ -11,11 +11,9 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
-//import javax.swing.JList;
-//import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
-
+import br.senai.sp.jandira.JtextFieldSomenteNumeros;
 import br.senai.sp.jandira.Tabuada;
 
 public class FrameTabuada {
@@ -56,67 +54,98 @@ public class FrameTabuada {
 //		título tabuada e subtitulo
 		JLabel labelTitulo = new JLabel();
 		labelTitulo.setText("Tabuada 1.0");
-		labelTitulo.setBounds(100, 1, 200, 50);
+		labelTitulo.setBounds(80, 6, 200, 50);
 		labelTitulo.setFont(fonteDoTitulo);
 		labelTitulo.setForeground(corDoTitulo);
 
 		JLabel labelSubtitulo = new JLabel();
 		labelSubtitulo.setText(
 				"<html>Com a tabuada 1.0 os seus problemas acabaram. Calcule<br/>a tabuada que desejar em segundos!</html>");
-		labelSubtitulo.setBounds(100, 50, 600, 40);
+		labelSubtitulo.setBounds(80, 55, 600, 50);
 		labelSubtitulo.setFont(fonteDosLabels);
 		labelSubtitulo.setForeground(corDoSubtitulo);
 
 //		Multiplicando
 		JLabel labelMultiplicando = new JLabel();
 		labelMultiplicando.setText("Multiplicando:");
-		labelMultiplicando.setBounds(110, 80, 187, 40);
+		labelMultiplicando.setBounds(50, 120, 187, 40);
 		labelMultiplicando.setFont(fonteDosLabels);
 
-		JTextField textFieldMultiplicando = new JTextField();
-		textFieldMultiplicando.setBounds(360, 80, 187, 40);
+		JTextField textFieldMultiplicando = new JtextFieldSomenteNumeros();
+		textFieldMultiplicando.setBounds(320, 120, 187, 40);
 		textFieldMultiplicando.setBorder(corDaBorda);
+		textFieldMultiplicando.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textFieldMultiplicando.transferFocus();
+				
+			}
+		});
+		
 
 //		Minimo Multiplicador
 		JLabel labelMinimoMultiplicador = new JLabel();
 		labelMinimoMultiplicador.setText("Mínimo Multiplicador:");
-		labelMinimoMultiplicador.setBounds(110, 130, 187, 40);
+		labelMinimoMultiplicador.setBounds(50, 180, 187, 40);
 		labelMinimoMultiplicador.setFont(fonteDosLabels);
 
-		JTextField textFieldMinimoMultiplicador = new JTextField();
-		textFieldMinimoMultiplicador.setBounds(360, 130, 187, 40);
+		JTextField textFieldMinimoMultiplicador = new JtextFieldSomenteNumeros();
+		textFieldMinimoMultiplicador.setBounds(320, 180, 187, 40);
 		textFieldMinimoMultiplicador.setBorder(corDaBorda);
+		textFieldMinimoMultiplicador.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textFieldMinimoMultiplicador.transferFocus();
+				
+			}
+		});
+		
 
 //		Maximo Multiplicador
 		JLabel labelMaximoMultiplicador = new JLabel();
 		labelMaximoMultiplicador.setText("Máximo Multiplicador:");
-		labelMaximoMultiplicador.setBounds(110, 210, 187, 40);
+		labelMaximoMultiplicador.setBounds(50, 240, 187, 40);
 		labelMaximoMultiplicador.setFont(fonteDosLabels);
 
-		JTextField textFieldMaximoMultiplicador = new JTextField();
-		textFieldMaximoMultiplicador.setBounds(360, 210, 187, 40);
+		JTextField textFieldMaximoMultiplicador = new JtextFieldSomenteNumeros();
+		textFieldMaximoMultiplicador.setBounds(320, 240, 187, 40);
 		textFieldMaximoMultiplicador.setBorder(corDaBorda);
+		textFieldMaximoMultiplicador.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				textFieldMaximoMultiplicador.transferFocus();
+				
+			}
+		});
+		
+		
 
 //		Resultado
 		JLabel labelResultado = new JLabel();
 		labelResultado.setText("Resultado:");
-		labelResultado.setBounds(30, 340, 187, 40);
+		labelResultado.setBounds(50, 360, 187, 40);
 		labelResultado.setFont(fonteDosLabels);
 
 //		botão Calcular e botão Limpar
 		JButton buttonCalcular = new JButton();
 		buttonCalcular.setText("Calcular");
-		buttonCalcular.setBounds(110, 280, 220, 50);
+		buttonCalcular.setBounds(50, 300, 270, 60);
 		buttonCalcular.setForeground(corDoTextoBotao);
 		buttonCalcular.setBackground(corDoBotaoCalcular);
 		buttonCalcular.setFont(fonteDosBotoes);
+		buttonCalcular.setBorder(corDaBorda);
+		
 
 		JButton buttonLimpar = new JButton();
 		buttonLimpar.setText("Limpar");
-		buttonLimpar.setBounds(350, 280, 180, 50);
+		buttonLimpar.setBounds(330, 300, 175, 60);
 		buttonLimpar.setForeground(corDoTextoBotao);
 		buttonLimpar.setBackground(corDoBotaoLimpar);
 		buttonLimpar.setFont(fonteDosBotoes);
+		buttonLimpar.setBorder(corDaBorda);
 
 //		caixa do Jlist
 		JList lista = new JList();
@@ -154,6 +183,11 @@ public class FrameTabuada {
 
 			}
 		});
+		
+		
+
+
+		
 
 //		adicionar componentes ao painel (container)
 		painel.add(labelTitulo);
