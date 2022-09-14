@@ -26,10 +26,13 @@ public class FrameTabuada {
 	public int altura;
 	public int largura;
 	public Color corDoTexto;
+	public Color corDoTextField;
 	public Font fonteDoTitulo;
 	public Font fonteDosLabels;
+	public Font fonteDoResultado;
 	public Font fonteDosBotoes;
 	public Font fonteDoSubtitulo;
+	public Font fonteDoTextField;
 	public Color corDeFundoDaTela;
 	public Color corDoBotaoLimpar;
 	public Color corDoBotaoCalcular;
@@ -37,6 +40,8 @@ public class FrameTabuada {
 	public Color corDoTitulo;
 	public Color corDoSubtitulo;
 	public Color corDoJlist;
+	public Color corDaLetraJList;
+	
 	public LineBorder corDaBorda;
 	ImageIcon IconeTabuada = new ImageIcon("src/br/senai/sp/jandira/image/imagem-tabuada.png");
 
@@ -78,6 +83,8 @@ public class FrameTabuada {
 		JTextField textFieldMultiplicando = new JtextFieldSomenteNumeros();
 		textFieldMultiplicando.setBounds(320, 120, 187, 40);
 		textFieldMultiplicando.setBorder(corDaBorda);
+		textFieldMultiplicando.setForeground(corDoTextField);
+		textFieldMultiplicando.setFont(fonteDoTextField);
 		textFieldMultiplicando.addActionListener(new ActionListener() {
 
 			@Override
@@ -96,6 +103,8 @@ public class FrameTabuada {
 		JTextField textFieldMinimoMultiplicador = new JtextFieldSomenteNumeros();
 		textFieldMinimoMultiplicador.setBounds(320, 180, 187, 40);
 		textFieldMinimoMultiplicador.setBorder(corDaBorda);
+		textFieldMinimoMultiplicador.setForeground(corDoTextField);
+		textFieldMinimoMultiplicador.setFont(fonteDoTextField);
 		textFieldMinimoMultiplicador.addActionListener(new ActionListener() {
 
 			@Override
@@ -114,6 +123,8 @@ public class FrameTabuada {
 		JTextField textFieldMaximoMultiplicador = new JtextFieldSomenteNumeros();
 		textFieldMaximoMultiplicador.setBounds(320, 240, 187, 40);
 		textFieldMaximoMultiplicador.setBorder(corDaBorda);
+		textFieldMaximoMultiplicador.setForeground(corDoTextField);
+		textFieldMaximoMultiplicador.setFont(fonteDoTextField);
 		textFieldMaximoMultiplicador.addActionListener(new ActionListener() {
 
 			@Override
@@ -127,7 +138,7 @@ public class FrameTabuada {
 		JLabel labelResultado = new JLabel();
 		labelResultado.setText("Resultado:");
 		labelResultado.setBounds(50, 360, 187, 40);
-		labelResultado.setFont(fonteDosLabels);
+		labelResultado.setFont(fonteDoResultado);
 
 //		botão Calcular e botão Limpar
 		JButton buttonCalcular = new JButton();
@@ -153,6 +164,8 @@ public class FrameTabuada {
 		scroll.setBounds(50, 400, 455, 300);
 		scroll.setBorder(corDaBorda);
 		lista.setBackground(corDoJlist);
+		lista.setForeground(corDaLetraJList);
+		scroll.setBackground(corDoSubtitulo);
 		
 		JLabel labelMensagemObrigatoria = new JLabel();
 		labelMensagemObrigatoria.setBounds(100, 200, 100, 60);
@@ -163,28 +176,6 @@ public class FrameTabuada {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				
-				/*if (textFieldMultiplicando.getText().length() > 0) {
-					labelMultiplicando.setVisible(false);
-				} else {
-					labelMensagemObrigatoria.setVisible(true);
-				}
-
-				if (textFieldMultiplicando.getText().length() > 0) {
-					labelMultiplicando.setVisible(false);
-				} else {
-					labelMensagemObrigatoria.setVisible(true);
-				}
-
-				if (textFieldMinimoMultiplicador.getText().length() > 0) {
-					labelMinimoMultiplicador.setVisible(false);
-				} else {
-					labelMensagemObrigatoria.setVisible(true);
-				}
-				if (textFieldMaximoMultiplicador.getText().length() > 0) {
-					labelMaximoMultiplicador.setVisible(false);
-				} else {
-					labelMensagemObrigatoria.setVisible(true);
-				}*/
 				
 				if ((textFieldMultiplicando.getText().isEmpty()) || (textFieldMinimoMultiplicador.getText().isEmpty())
 						|| (textFieldMaximoMultiplicador.getText().isEmpty())) {
@@ -237,6 +228,10 @@ public class FrameTabuada {
 		labelIcone.setBounds(10, 6, 30, 30);
 		labelIcone.setSize(85, 85);
 		labelIcone.setIcon(IconeTabuada);
+		
+		
+		
+		
 
 //	adicionar componentes ao painel (container)
 		painel.add(labelTitulo);
